@@ -1,0 +1,7 @@
+aml:
+  anthropic:
+    api-key: ${ANTHROPIC_API_KEY}
+    model-name: claude-sonnet-5
+  sanctions:
+    provider:
+      base-url: ${SANCTIONS_PROVIDER_BASE_URL:http://localhost:8082}

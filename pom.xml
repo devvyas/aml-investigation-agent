@@ -23,6 +23,7 @@
   <modules>
     <module>agent-tools-common</module>
     <module>agent-kyc</module>
+    <module>agent-sanctions</module>
   </modules>
 
   <dependencyManagement>
