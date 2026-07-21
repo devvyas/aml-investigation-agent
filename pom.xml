@@ -22,6 +22,7 @@
 
   <modules>
     <module>agent-tools-common</module>
+    <module>agent-kyc</module>
   </modules>
 
   <dependencyManagement>
