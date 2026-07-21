@@ -24,6 +24,7 @@
     <module>agent-tools-common</module>
     <module>agent-kyc</module>
     <module>agent-sanctions</module>
+    <module>agent-network</module>
   </modules>
 
   <dependencyManagement>
