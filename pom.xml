@@ -25,6 +25,7 @@
     <module>agent-kyc</module>
     <module>agent-sanctions</module>
     <module>agent-network</module>
+    <module>investigation-store</module>
   </modules>
 
   <dependencyManagement>

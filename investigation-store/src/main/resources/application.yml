@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: ${INVESTIGATION_DB_URL:jdbc:postgresql://localhost:5432/aml_investigations}
+    username: ${INVESTIGATION_DB_USERNAME:aml}
+    password: ${INVESTIGATION_DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
