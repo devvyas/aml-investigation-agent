@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.aml.investigation</groupId>
+    <artifactId>aml-investigation-agent</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>agent-orchestrator</artifactId>
+  <packaging>jar</packaging>
+
+  <name>agent-orchestrator</name>
+  <description>Fan-out, synthesis, and the REST API. The one module allowed a runtime-only dependency on the sub-agent modules — see the dependency scopes below.</description>
+
+  <dependencies>
+    <!-- Compile-scope: agent-orchestrator's own source code is allowed to import from these.
+         Nothing from agent-kyc/agent-sanctions/agent-network appears here. -->
+    <dependency>
+      <groupId>com.aml.investigation</groupId>
+      <artifactId>agent-tools-common</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.aml.investigation</groupId>
+      <artifactId>investigation-store</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <!-- Runtime-scope only: needed so Spring can find and wire the Local*Investigator beans
+         at startup in today's monolith. Maven will not put these on the compile classpath, so
+         this module's own source code cannot import anything from these packages even by
+         accident — the boundary from Phase 2 is enforced by the build, not just convention. -->
+    <dependency>
+      <groupId>com.aml.investigation</groupId>
+      <artifactId>agent-kyc</artifactId>
+      <version>${project.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.aml.investigation</groupId>
+      <artifactId>agent-sanctions</artifactId>
+      <version>${project.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.aml.investigation</groupId>
+      <artifactId>agent-network</artifactId>
+      <version>${project.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>dev.langchain4j</groupId>
+      <artifactId>langchain4j</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>dev.langchain4j</groupId>
+      <artifactId>langchain4j-anthropic</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

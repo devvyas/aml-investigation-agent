@@ -26,6 +26,7 @@
     <module>agent-sanctions</module>
     <module>agent-network</module>
     <module>investigation-store</module>
+    <module>agent-orchestrator</module>
   </modules>
 
   <dependencyManagement>

@@ -1,0 +1,18 @@
+spring:
+  config:
+    import:
+      - classpath:agent-kyc.yml
+      - classpath:agent-sanctions.yml
+      - classpath:agent-network.yml
+      - classpath:investigation-store.yml
+
+aml:
+  orchestrator:
+    executor:
+      core-pool-size: 4
+      max-pool-size: 8
+      queue-capacity: 50
+    timeout:
+      kyc-seconds: 30
+      sanctions-seconds: 30
+      network-seconds: 60
