@@ -78,4 +78,24 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Only agent-orchestrator gets this plugin — it's the one module that becomes an
+           executable jar. agent-kyc/agent-sanctions/agent-network/agent-tools-common/
+           investigation-store stay plain library jars, matching Phase 9's monolith design:
+           one deployable, everything else bundled into it. -->
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
